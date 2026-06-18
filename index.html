@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Your School Name</title>
+  <title>Vidya Bhawan Girls’ Senior Secondary School</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -12,8 +12,8 @@
   <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-900 font-black text-xl">S</div>
-        <span class="font-bold text-xl tracking-tight">EXCELLENCE ACADEMY</span>
+        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-900 font-black text-xl">V</div>
+        <span class="font-bold text-xl tracking-tight">Vidya Bhawan Girls’ Senior Secondary School</span>
       </div>
       <div class="space-x-1 md:space-x-6 text-sm md:text-base mt-2 md:mt-0">
         <a href="#home" class="hover:text-blue-200 transition px-2 py-1">Home</a>
@@ -72,15 +72,16 @@
       <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div class="text-blue-600 font-bold mb-2">📍 Address</div>
-          <p class="text-sm text-gray-600 leading-relaxed">123 School Road, Sector 4, New Delhi - 110001</p>
+          <p id="contact-address" class="text-sm text-gray-600 leading-relaxed">Loading address...</p>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div class="text-blue-600 font-bold mb-2">✉️ Email Contacts</div>
-          <p class="text-sm text-gray-600">info@yourschool.edu.in<br>admissions@yourschool.edu.in</p>
+          <p id="contact-email" class="text-sm text-gray-600">Loading email...</p>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div class="text-blue-600 font-bold mb-2">📞 Direct Line</div>
-          <p class="text-sm text-gray-600">+91 11 2345 6789<br>Hours: 8:00 AM - 3:00 PM</p>
+          <p id="contact-phone" class="text-sm text-gray-600">Loading phone...</p>
+          <p id="contact-hours" class="text-sm text-gray-600 mt-2"></p>
         </div>
       </div>
     </div>
@@ -91,5 +92,27 @@
     <p>&copy; 2026 Excellence Academy. Fully compliant static CBSE template.</p>
   </footer>
 
+  <script src="config.js"></script>
+  <script>
+    const config = window.SchoolConfig || typeof SchoolConfig !== 'undefined' && SchoolConfig || {};
+    const contact = config.contactDetails || {};
+    const addressEl = document.getElementById('contact-address');
+    const emailEl = document.getElementById('contact-email');
+    const phoneEl = document.getElementById('contact-phone');
+    const hoursEl = document.getElementById('contact-hours');
+
+    if (addressEl) {
+      addressEl.innerHTML = contact.address ? contact.address.split('\n').map(line => line.trim()).join('<br>') : 'Address not available';
+    }
+    if (emailEl) {
+      emailEl.innerHTML = (contact.emails || []).map(email => `<a href="mailto:${email}" class="hover:text-blue-900">${email}</a>`).join('<br>') || 'Email not available';
+    }
+    if (phoneEl) {
+      phoneEl.innerHTML = (contact.phoneNumbers || []).map(phone => `<a href="tel:${phone.replace(/[^0-9+]/g, '')}" class="hover:text-blue-900">${phone}</a>`).join('<br>') || 'Phone not available';
+    }
+    if (hoursEl) {
+      hoursEl.textContent = contact.hours ? `Hours: ${contact.hours}` : '';
+    }
+  </script>
 </body>
 </html>

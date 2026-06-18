@@ -12,6 +12,15 @@ const SchoolConfig = {
     { id: 8, info: "CONTACT DETAILS (LANDLINE/MOBILE)", details: "011-35627382 / 9212213141" }
   ],
 
+  schoolName: "Vidya Bhawan Girls’ Senior Secondary School",
+
+  contactDetails: {
+    address: "Vidya Bhawan Girls’ Senior Secondary School\nNew Rajinder Nagar\nNew Delhi - 110060",
+    emails: ["vidyabhawandelhi@gmail.com"],
+    phoneNumbers: ["011-35627382", "9212213141"],
+    hours: "8:00 AM - 3:00 PM"
+  },
+
   // B: Documents and Information
   documents: [
     { id: 1, title: "COPIES OF AFFILIATION/UPGRADATION LETTER AND RECENT EXTENSION OF AFFILIATION, IF ANY", link: "https://google.com" },
@@ -58,3 +67,5 @@ const SchoolConfig = {
     { id: 7, info: "LINK OF YOUTUBE VIDEO OF THE INSPECTION OF SCHOOL COVERING THE INFRASTRUCTURE OF THE SCHOOL", details: "Not provided" }
   ]
 };
+
+window.SchoolConfig = SchoolConfig;
