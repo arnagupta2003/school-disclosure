@@ -5,7 +5,7 @@ const SchoolConfig = {
     { id: 1, info: "NAME OF THE SCHOOL", details: "Vidya Bhawan Girls’ Senior Secondary School" },
     { id: 2, info: "AFFILIATION NO.(IF APPLICABLE)", details: "2788032" },
     { id: 3, info: "SCHOOL CODE (IF APPLICABLE)", details: "87104" },
-    { id: 4, info: "COMPLETE ADDRESS WITH PIN CODE", details: "New Rajinder Nagar, New Delhi- 110060" },
+    { id: 4, info: "COMPLETE ADDRESS WITH PIN CODE", details: "R Block, New Rajinder Nagar, New Delhi- 110060" },
     { id: 5, info: "VICE PRINCIPAL NAME", details: "POOJA" },
     { id: 6, info: "VICE PRINCIPAL QUALIFICATION", details: "M.Com, M.A. (Economics), B.Ed" },
     { id: 7, info: "SCHOOL EMAIL ID", details: "vidyabhawandelhi@gmail.com" },
@@ -15,7 +15,7 @@ const SchoolConfig = {
   schoolName: "Vidya Bhawan Girls’ Senior Secondary School",
 
   contactDetails: {
-    address: "Vidya Bhawan Girls’ Senior Secondary School\nNew Rajinder Nagar\nNew Delhi - 110060",
+    address: "Vidya Bhawan Girls’ Senior Secondary School\nR Block, New Rajinder Nagar\nNew Delhi - 110060",
     emails: ["vidyabhawandelhi@gmail.com"],
     phoneNumbers: ["011-35627382", "9212213141"],
     hours: "8:00 AM - 3:00 PM"
