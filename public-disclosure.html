@@ -127,6 +127,24 @@
   <!-- Script to import configuration and programmatically generate your rows -->
   <script src="config.js"></script>
   <script>
+    // Smart evaluator to check for web links or local file paths
+    const isLinkOrFile = value => {
+      if (typeof value !== 'string') return false;
+      const cleanValue = value.trim().toLowerCase();
+      return /^(https?:\/\/)/i.test(cleanValue) || 
+             cleanValue.startsWith('assets/') || 
+             cleanValue.endsWith('.pdf');
+    };
+
+    // Renders a stylized action button for links/files, otherwise returns formatted text
+    const renderLinkOrText = (value, defaultButtonText = "VIEW DOCUMENT") => {
+      if (isLinkOrFile(value)) {
+        const href = value.trim();
+        return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 rounded-md font-semibold text-xs transition uppercase tracking-wider">${defaultButtonText}</a>`;
+      }
+      return `<span class="text-gray-900 font-semibold">${value || 'Not available'}</span>`;
+    };
+
     // Injection logic mapping config objects to DOM tables
     const populateStandardTable = (elementId, dataArray) => {
       const container = document.getElementById(elementId);
@@ -134,18 +152,9 @@
         <tr class="hover:bg-gray-50 transition">
           <td class="px-6 py-4 font-semibold text-gray-500">${item.id}</td>
           <td class="px-6 py-4 text-gray-700 font-medium">${item.info}</td>
-          <td class="px-6 py-4 text-gray-900 font-semibold">${item.details}</td>
+          <td class="px-6 py-4">${renderLinkOrText(item.details)}</td>
         </tr>
       `).join('');
-    };
-
-    const isUrl = value => typeof value === 'string' && /^(https?:\/\/|mailto:|tel:)/i.test(value.trim());
-    const renderLinkOrText = value => {
-      if (isUrl(value)) {
-        const href = value.trim();
-        return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-semibold underline transition">${href}</a>`;
-      }
-      return `<span class="text-gray-900 font-semibold">${value || 'Not available'}</span>`;
     };
 
     const populateLinkTable = (elementId, dataArray) => {
@@ -168,16 +177,13 @@
       
       // Separate check inside infrastructure loop if field points to a web link (YouTube video requirement)
       const infraContainer = document.getElementById("infrastructure-table");
-      infraContainer.innerHTML = SchoolConfig.infrastructure.map(item => {
-        const detailValue = item.details || 'Not provided';
-        return `
-          <tr class="hover:bg-gray-50 transition">
-            <td class="px-6 py-4 font-semibold text-gray-500">${item.id}</td>
-            <td class="px-6 py-4 text-gray-700 font-medium">${item.info}</td>
-            <td class="px-6 py-4">${isUrl(detailValue) ? `<a href="${detailValue.trim()}" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline transition hover:text-blue-800">${detailValue.trim()}</a>` : `<span class="text-gray-900 font-semibold">${detailValue}</span>`}</td>
-          </tr>
-        `;
-      }).join('');
+      infraContainer.innerHTML = SchoolConfig.infrastructure.map(item => `
+        <tr class="hover:bg-gray-50 transition">
+          <td class="px-6 py-4 font-semibold text-gray-500">${item.id}</td>
+          <td class="px-6 py-4 text-gray-700 font-medium">${item.info}</td>
+          <td class="px-6 py-4">${renderLinkOrText(item.details, "WATCH VIDEO")}</td>
+        </tr>
+      `).join('');
     });
   </script>
 </body>
