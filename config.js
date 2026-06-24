@@ -35,9 +35,9 @@ const SchoolConfig = {
 
   // C: Result and Academics
   academics: [
-    { id: 1, title: "FEE STRUCTURE OF THE SCHOOL", link: "There is no fee charge from any student" },
+    { id: 1, title: "FEE STRUCTURE OF THE SCHOOL", link: "assets/C-01-Nil-Fees.pdf" },
     { id: 2, title: "ANNUAL ACADEMIC CALENDAR", link: "ok" },
-    { id: 3, title: "LIST OF SCHOOL MANAGEMENT COMMITTEE (SMC)", link: "15" },
+    { id: 3, title: "LIST OF SCHOOL MANAGEMENT COMMITTEE (SMC)", link: "assets/C-03-SMC-List.pdf" },
     { id: 4, title: "LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS", link: "10" },
     { id: 5, title: "LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION AS PER APPLICABILITY", link: "<strong>CLASS X</strong><br>(93.16%) 2023-2024<br>(68.69%) 2024-2025<br>(88.88%) 2025-2026<br><br><strong>CLASS XII</strong><br>(87.40%) 2023-2024<br>(90.68%) 2024-2025<br>(90.51%) 2025-2026" }
   ],
