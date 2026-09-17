@@ -45,11 +45,11 @@ const SchoolConfig = {
   // D: Staff (Teaching)
   staff: [
     { id: 1, info: "VICE PRINCIPAL", details: "1" },
-    { id: 2, info: "TOTAL NO. OF TEACHERS", details: "36" },
-    { id: 3, info: "PGT", details: "10" },
-    { id: 4, info: "TGT", details: "15" },
+    { id: 2, info: "TOTAL NO. OF TEACHERS", details: "33" },
+    { id: 3, info: "PGT", details: "9" },
+    { id: 4, info: "TGT", details: "14" },
     { id: 5, info: "PRT", details: "10" },
-    { id: 6, info: "PET", details: "1" },
+    { id: 6, info: "Assistant Teachers", details: "0" },
     { id: 7, info: "Other Staff", details: "6" },
     { id: 8, info: "TEACHERS SECTION RATIO", details: "1:5" },
     { id: 9, info: "DETAILS OF SPECIAL EDUCATOR", details: "NIL" },
