@@ -29,16 +29,16 @@ const SchoolConfig = {
     { id: 4, title: "COPIES OF RECOGNITION CERTIFICATE UNDER RTE ACT, 2009, AND IT'S RENEWAL IF APPLICABLE", link: "assets/B-04-PERMANENT-RECOGNITION.pdf" },
     { id: 5, title: "COPY OF VALID BUILDING SAFETY CERTIFICATE AS PER THE NATIONAL BUILDING CODE", link: "assets/B-05-Building-Safety-Certificate.pdf" },
     { id: 6, title: "COPY OF VALID FIRE SAFETY CERTIFICATE ISSUED BY THE COMPETENT AUTHORITY", link: "assets/B-06-Fire-Safety-Certificate-VBGS.pdf" },
-    { id: 7, title: "COPY OF THE DEO CERTIFICATE SUBMITTED BY THE SCHOOL FOR AFFILIATION/UPGRADATION/EXTENSION OF AFFILIATION OR SELF CERTIFICATION BY SCHOOL", link: "ok" },
+    { id: 7, title: "COPY OF THE DEO CERTIFICATE SUBMITTED BY THE SCHOOL FOR AFFILIATION/UPGRADATION/EXTENSION OF AFFILIATION OR SELF CERTIFICATION BY SCHOOL", link: "assets/B-07-DoE-approval-for-CBSE.pdf" },
     { id: 8, title: "COPIES OF VALID WATER, HEALTH AND SANITATION CERTIFICATES", link: "assets/B-08-Drinking-water.pdf" }
   ],
 
   // C: Result and Academics
   academics: [
     { id: 1, title: "FEE STRUCTURE OF THE SCHOOL", link: "assets/C-01-Nil-Fees.pdf" },
-    { id: 2, title: "ANNUAL ACADEMIC CALENDAR", link: "ok" },
+    { id: 2, title: "ANNUAL ACADEMIC CALENDAR", link: "assets/C-02-AnnualCalendar2026-27.pdf" },
     { id: 3, title: "LIST OF SCHOOL MANAGEMENT COMMITTEE (SMC)", link: "assets/C-03-SMC-List.pdf" },
-    { id: 4, title: "LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS", link: "10" },
+    { id: 4, title: "LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS", link: "assets/C-04-PTA-List.pdf" },
     { id: 5, title: "LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION AS PER APPLICABILITY", link: "<strong>CLASS X</strong><br>(93.16%) 2023-2024<br>(68.69%) 2024-2025<br>(88.88%) 2025-2026<br><br><strong>CLASS XII</strong><br>(87.40%) 2023-2024<br>(90.68%) 2024-2025<br>(90.51%) 2025-2026" }
   ],
 
