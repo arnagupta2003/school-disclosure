@@ -30,7 +30,7 @@ const SchoolConfig = {
     { id: 5, title: "COPY OF VALID BUILDING SAFETY CERTIFICATE AS PER THE NATIONAL BUILDING CODE", link: "assets/B-05-Building-Safety-Certificate.pdf" },
     { id: 6, title: "COPY OF VALID FIRE SAFETY CERTIFICATE ISSUED BY THE COMPETENT AUTHORITY", link: "assets/B-06-Fire-Safety-Certificate-VBGS.pdf" },
     { id: 7, title: "COPY OF THE DEO CERTIFICATE SUBMITTED BY THE SCHOOL FOR AFFILIATION/UPGRADATION/EXTENSION OF AFFILIATION OR SELF CERTIFICATION BY SCHOOL", link: "assets/B-07-DoE-approval-for-CBSE.pdf" },
-    { id: 8, title: "COPIES OF VALID WATER, HEALTH AND SANITATION CERTIFICATES", link: "assets/B-08-Drinking-water.pdf" }
+    { id: 8, title: "COPIES OF VALID WATER, HEALTH AND SANITATION CERTIFICATES", link: "assets/B-07-DoE-approval-for-CBSE.pdf" }
   ],
 
   // C: Result and Academics
@@ -39,7 +39,7 @@ const SchoolConfig = {
     { id: 2, title: "ANNUAL ACADEMIC CALENDAR", link: "assets/C-02-AnnualCalendar2026-27.pdf" },
     { id: 3, title: "LIST OF SCHOOL MANAGEMENT COMMITTEE (SMC)", link: "assets/C-03-SMC-List.pdf" },
     { id: 4, title: "LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS", link: "assets/C-04-PTA-List.pdf" },
-    { id: 5, title: "LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION AS PER APPLICABILITY", link: "<strong>CLASS X</strong><br>(93.16%) 2023-2024<br>(68.69%) 2024-2025<br>(88.88%) 2025-2026<br><br><strong>CLASS XII</strong><br>(87.40%) 2023-2024<br>(90.68%) 2024-2025<br>(90.51%) 2025-2026" }
+    { id: 5, title: "LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION AS PER APPLICABILITY", link: "assets/C-05-Result-Analysis.pdf" }
   ],
 
   // D: Staff (Teaching)
@@ -48,12 +48,11 @@ const SchoolConfig = {
     { id: 2, info: "TOTAL NO. OF TEACHERS", details: "33" },
     { id: 3, info: "PGT", details: "9" },
     { id: 4, info: "TGT", details: "14" },
-    { id: 5, info: "PRT", details: "10" },
-    { id: 6, info: "Assistant Teachers", details: "10" },
-    { id: 7, info: "Other Staff", details: "6" },
-    { id: 8, info: "TEACHERS SECTION RATIO", details: "1:5" },
-    { id: 9, info: "DETAILS OF SPECIAL EDUCATOR", details: "NIL" },
-    { id: 10, info: "DETAILS OF COUNSELLOR AND WELLNESS TEACHER", details: "3" }
+    { id: 5, info: "Assistant Teachers", details: "10" },
+    { id: 6, info: "Other Staff", details: "6" },
+    { id: 7, info: "TEACHERS SECTION RATIO", details: "1:5" },
+    { id: 8, info: "DETAILS OF SPECIAL EDUCATOR", details: "NIL" },
+    { id: 9, info: "DETAILS OF COUNSELLOR AND WELLNESS TEACHER", details: "0" }
   ],
 
   // E: School Infrastructure
@@ -64,7 +63,7 @@ const SchoolConfig = {
     { id: 4, info: "INTERNET FACILITY", details: "YES" },
     { id: 5, info: "NO. OF GIRLS TOILETS", details: "25" },
     { id: 6, info: "NO. OF BOYS TOILETS", details: "2" },
-    { id: 7, info: "LINK OF YOUTUBE VIDEO OF THE INSPECTION OF SCHOOL COVERING THE INFRASTRUCTURE OF THE SCHOOL", details: "Not provided" }
+    { id: 7, info: "LINK OF YOUTUBE VIDEO OF THE INSPECTION OF SCHOOL COVERING THE INFRASTRUCTURE OF THE SCHOOL", details: "assets/VID-20260918-WA0003.mp4" }
   ]
 };
 
