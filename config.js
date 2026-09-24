@@ -30,7 +30,7 @@ const SchoolConfig = {
     { id: 5, title: "COPY OF VALID BUILDING SAFETY CERTIFICATE AS PER THE NATIONAL BUILDING CODE", link: "assets/B-05-Building-Safety-Certificate.pdf" },
     { id: 6, title: "COPY OF VALID FIRE SAFETY CERTIFICATE ISSUED BY THE COMPETENT AUTHORITY", link: "assets/B-06-Fire-Safety-Certificate-VBGS.pdf" },
     { id: 7, title: "COPY OF THE DEO CERTIFICATE SUBMITTED BY THE SCHOOL FOR AFFILIATION/UPGRADATION/EXTENSION OF AFFILIATION OR SELF CERTIFICATION BY SCHOOL", link: "assets/B-07-DoE-approval-for-CBSE.pdf" },
-    { id: 8, title: "COPIES OF VALID WATER, HEALTH AND SANITATION CERTIFICATES", link: "assets/B-07-DoE-approval-for-CBSE.pdf" }
+    { id: 8, title: "COPIES OF VALID WATER, HEALTH AND SANITATION CERTIFICATES", link: "assets/B-08-Water-and-Sanitation-Certificate.pdf" }
   ],
 
   // C: Result and Academics
