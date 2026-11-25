@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Vidya Bhawan Girls’ Senior Secondary School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Main Navigation Header -->
+  <nav class="bg-blue-950 text-white sticky top-0 z-40 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-900 font-black text-xl">V</div>
+        <span class="font-bold text-xl tracking-tight">Vidya Bhawan Girls’ Senior Secondary School</span>
+      </a>
+      <div class="space-x-1 md:space-x-6 text-sm md:text-base mt-2 md:mt-0">
+        <a href="index.html" class="hover:text-blue-200 transition px-2 py-1">Home</a>
+        <a href="index.html#about" class="hover:text-blue-200 transition px-2 py-1">Our School</a>
+        <a href="gallery.html" class="text-amber-400 font-semibold px-2 py-1 border-b-2 border-amber-400">Gallery</a>
+        <a href="index.html#contact" class="hover:text-blue-200 transition px-2 py-1">Contact</a>
+        <a href="public-disclosure.html" class="bg-amber-500 text-blue-950 font-bold px-3 py-1.5 rounded hover:bg-amber-400 transition shadow-sm">Mandatory Public Disclosure</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="bg-blue-950 text-white py-14 border-t border-blue-900">
+    <div class="max-w-7xl mx-auto px-4">
+      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">School Life &amp; Facilities</span>
+      <h1 class="text-3xl md:text-5xl font-black mt-2 tracking-tight">Photo Gallery</h1>
+      <p class="text-blue-100/80 mt-3 max-w-2xl">Explore moments from our celebrations, classrooms, laboratories, library, and sports facilities.</p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-12 w-full flex-1">
+    <!-- Album Overview Grid -->
+    <section id="albums-view">
+      <div class="mb-8">
+        <h2 class="text-2xl font-extrabold text-gray-950">Albums</h2>
+        <p class="text-gray-600 mt-1">Select an album below to view its photos.</p>
+      </div>
+      <div id="albums-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- Active Sub-Gallery View -->
+    <section id="album-detail-view" class="hidden">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 pb-6 border-b border-gray-200">
+        <div>
+          <button id="back-to-albums" type="button" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-800 hover:text-blue-950 mb-3 cursor-pointer">
+            <span>&larr;</span> All Albums
+          </button>
+          <div class="flex items-center gap-3 flex-wrap">
+            <h2 id="album-title" class="text-3xl font-extrabold text-gray-950"></h2>
+            <span id="album-count" class="bg-blue-100 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-full"></span>
+          </div>
+          <p id="album-description" class="text-gray-600 mt-2"></p>
+        </div>
+        <div id="album-pills" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div id="photos-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"></div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button id="lightbox-close" type="button" aria-label="Close photo" class="absolute top-4 right-4 text-white/80 hover:text-white text-3xl font-bold w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 cursor-pointer">&times;</button>
+    <button id="lightbox-prev" type="button" aria-label="Previous photo" class="absolute left-3 md:left-6 text-white/80 hover:text-white text-3xl font-bold w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 cursor-pointer">&lsaquo;</button>
+    <div class="max-w-4xl w-full flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="" class="max-h-[78vh] w-auto rounded-lg shadow-2xl object-contain">
+      <p id="lightbox-caption" class="text-white text-center mt-4 text-base font-medium"></p>
+      <p id="lightbox-counter" class="text-white/60 text-xs mt-1"></p>
+    </div>
+    <button id="lightbox-next" type="button" aria-label="Next photo" class="absolute right-3 md:right-6 text-white/80 hover:text-white text-3xl font-bold w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 cursor-pointer">&rsaquo;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-950 text-blue-100/70 text-center py-8 text-sm mt-auto border-t border-blue-900">
+    <p>&copy; 2026 Vidya Bhawan Girls’ Senior Secondary School</p>
+  </footer>
+
+  <script>
+    const ALBUMS = [
+      {
+        id: 'diwali-mela',
+        eyebrow: 'Celebration',
+        title: 'Diwali Mela',
+        description: 'Moments from our school community’s Diwali Mela celebration.',
+        cover: 'assets/gallery/diwali-mela/diwali-mela-01.jpeg',
+        photos: Array.from({ length: 14 }, (_, idx) => {
+          const num = String(idx + 1).padStart(2, '0');
+          return {
+            src: `assets/gallery/diwali-mela/diwali-mela-${num}.jpeg`,
+            label: `Diwali Mela — Photo ${idx + 1}`,
+            alt: `Diwali Mela celebration at Vidya Bhawan Girls’ Senior Secondary School, photo ${idx + 1}`
+          };
+        })
+      },
+      {
+        id: 'campus-life',
+        eyebrow: 'Campus & Facilities',
+        title: 'Campus & School Life',
+        description: 'Classrooms, laboratories, library, and sports facilities across our campus.',
+        cover: 'assets/gallery/school-pics/IMG-20261125-WA0030.jpg',
+        photos: [
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0022.jpg',
+            label: 'Chemistry Laboratory',
+            alt: 'Chemistry Laboratory with wooden workbenches and reagent racks'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0023.jpg',
+            label: 'Physics Laboratory',
+            alt: 'Physics Laboratory with experiment tables and apparatus cabinets'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0036.jpg',
+            label: 'Biology Laboratory',
+            alt: 'Biology Laboratory with specimen cabinets and lab workbenches'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0024.jpg',
+            label: 'Home Science Laboratory',
+            alt: 'Home Science Laboratory with steel work counters and student tables'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0025.jpg',
+            label: 'School Library',
+            alt: 'School Library with wooden bookshelves and reading tables'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0026.jpg',
+            label: 'Library Reading Hall',
+            alt: 'Wide view of the School Library reading hall and book collection'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0028.jpg',
+            label: 'Primary Classroom & Activity Room',
+            alt: 'Primary classroom with colorful desks, art board, and activity games'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0029.jpg',
+            label: 'Central Courtyard',
+            alt: 'Shaded central school courtyard with heritage tree'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0030.jpg',
+            label: 'School Academic Block',
+            alt: 'Exterior view of the main school academic block along the tree-lined walkway'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0032.jpg',
+            label: 'Campus Walkway & Classrooms',
+            alt: 'Potted plants lining the walkway outside the school classrooms'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0031.jpg',
+            label: 'School Playground',
+            alt: 'Open school playground surrounded by trees'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0027.jpg',
+            label: 'Outdoor Badminton Court',
+            alt: 'Fenced outdoor badminton court on campus'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0033.jpg',
+            label: 'Box Cricket & Football Turf',
+            alt: 'Enclosed green turf arena for box cricket and football'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0034.jpg',
+            label: 'Enclosed Sports Turf',
+            alt: 'Side view of the netted box cricket and football turf'
+          },
+          {
+            src: 'assets/gallery/school-pics/IMG-20261125-WA0035.jpg',
+            label: 'Table Tennis & Recreation Area',
+            alt: 'Outdoor table tennis and foosball recreation area'
+          }
+        ]
+      }
+    ];
+
+    const albumsView = document.getElementById('albums-view');
+    const albumsGrid = document.getElementById('albums-grid');
+    const detailView = document.getElementById('album-detail-view');
+    const albumTitle = document.getElementById('album-title');
+    const albumCount = document.getElementById('album-count');
+    const albumDescription = document.getElementById('album-description');
+    const albumPills = document.getElementById('album-pills');
+    const photosGrid = document.getElementById('photos-grid');
+    const backBtn = document.getElementById('back-to-albums');
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    let currentAlbum = null;
+    let currentIndex = 0;
+
+    function renderAlbums() {
+      albumsGrid.innerHTML = ALBUMS.map(album => `
+        <a href="#${album.id}" class="group block bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition">
+          <div class="relative overflow-hidden aspect-[16/10] bg-gray-100">
+            <img src="${album.cover}" alt="${album.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            <span class="absolute top-3 right-3 bg-blue-950/85 text-white text-xs font-bold px-3 py-1 rounded-full">${album.photos.length} Photos</span>
+          </div>
+          <div class="p-5">
+            <span class="text-blue-700 text-xs font-bold uppercase tracking-wider">${album.eyebrow}</span>
+            <h3 class="text-xl font-extrabold text-gray-950 mt-1 group-hover:text-blue-800 transition">${album.title}</h3>
+            <p class="text-gray-600 text-sm mt-2">${album.description}</p>
+            <span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-800 mt-4">Open album &rarr;</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function openAlbum(albumId) {
+      const album = ALBUMS.find(a => a.id === albumId);
+      if (!album) {
+        currentAlbum = null;
+        albumsView.classList.remove('hidden');
+        detailView.classList.add('hidden');
+        return;
+      }
+
+      currentAlbum = album;
+      albumsView.classList.add('hidden');
+      detailView.classList.remove('hidden');
+
+      albumTitle.textContent = album.title;
+      albumCount.textContent = `${album.photos.length} Photos`;
+      albumDescription.textContent = album.description;
+
+      albumPills.innerHTML = ALBUMS.map(a => {
+        const active = a.id === album.id;
+        return `<a href="#${a.id}" class="px-3.5 py-1.5 rounded-full text-sm font-semibold transition ${active ? 'bg-blue-950 text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'}">${a.title}</a>`;
+      }).join('');
+
+      photosGrid.innerHTML = album.photos.map((photo, index) => `
+        <figure class="group overflow-hidden rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer" data-index="${index}">
+          <div class="overflow-hidden aspect-[4/3] bg-gray-100">
+            <img src="${photo.src}" alt="${photo.alt}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          </div>
+          <figcaption class="p-3 text-sm font-medium text-gray-800">${photo.label}</figcaption>
+        </figure>
+      `).join('');
+
+      photosGrid.querySelectorAll('figure').forEach(fig => {
+        fig.addEventListener('click', () => openLightbox(Number(fig.dataset.index)));
+      });
+    }
+
+    function openLightbox(index) {
+      if (!currentAlbum) return;
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    function updateLightbox() {
+      const photo = currentAlbum.photos[currentIndex];
+      lightboxImg.src = photo.src;
+      lightboxImg.alt = photo.alt;
+      lightboxCaption.textContent = photo.label;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${currentAlbum.photos.length}`;
+    }
+
+    function stepLightbox(delta) {
+      if (!currentAlbum) return;
+      const total = currentAlbum.photos.length;
+      currentIndex = (currentIndex + delta + total) % total;
+      updateLightbox();
+    }
+
+    backBtn.addEventListener('click', () => {
+      history.pushState(null, '', 'gallery.html');
+      openAlbum(null);
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-prev').addEventListener('click', () => stepLightbox(-1));
+    document.getElementById('lightbox-next').addEventListener('click', () => stepLightbox(1));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') stepLightbox(-1);
+      if (e.key === 'ArrowRight') stepLightbox(1);
+    });
+
+    function syncFromHash() {
+      const id = location.hash.replace(/^#/, '');
+      openAlbum(id || null);
+    }
+
+    window.addEventListener('hashchange', syncFromHash);
+    renderAlbums();
+    syncFromHash();
+  </script>
+</body>
+</html>
